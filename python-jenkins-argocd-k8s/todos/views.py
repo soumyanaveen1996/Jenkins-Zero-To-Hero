@@ -25,8 +25,7 @@ def delete(request, todo_id):
 
 def update(request, todo_id):
     todo = get_object_or_404(Todo, pk=todo_id)
-    isCompleted = request.POST.get('isCompleted', False)
-    if isCompleted == 'on':
+    if (isCompleted := request.POST.get('isCompleted', False)) == 'on':
         isCompleted = True
     
     todo.isCompleted = isCompleted
